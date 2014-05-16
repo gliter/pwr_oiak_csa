@@ -6,9 +6,14 @@ import java.util.Random;
 class OptiRand extends AOptimizer{
 	double chance;
 	Random rand = new Random();
+	OptiRand(double chance) {
+		this.name = "Losowa";
+		this.chance = chance;
+	}
 	OptiRand(ArrayList<Integer> csaLevelIn, int modulo, double chance) {
 		super(csaLevelIn, modulo);
 		this.chance = chance;
+		this.name = "Losowa";
 	}
 
 	@Override

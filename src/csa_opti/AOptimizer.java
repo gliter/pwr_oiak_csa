@@ -164,4 +164,24 @@ abstract class AOptimizer {
 		}
 		while(max > 2);
 	}
+	void runAndPrint() {
+		int max;
+		for(Integer i : csaLevelIn)
+			System.out.print(i.toString() + "\t");
+		System.out.println();
+		do {
+			this.pushAndRun();
+			System.out.println(this.getAddersNum());
+			System.out.println("A: " + this.getA() + ", T: " + this.getT());
+			sumA += this.getA();
+			sumT += this.getT();
+			max = this.saveOutTree();
+		
+			for(Integer i : csaLevelIn)
+				System.out.print(i.toString() + "\t");
+			System.out.println();
+		}
+		while(max > 2);
+		System.out.println("SUM: A: " + sumA + ", SUM: T: " + sumT);
+	}
 }

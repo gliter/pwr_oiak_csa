@@ -19,9 +19,10 @@ public class Main {
 		for(AOptimizer op : optiArr) {
 			System.out.println("Opt: " + op.getName());
 			for(TestCase testCase : testCases) {
-				op.init(testCase.csaLevel, testCase.width);
+				op.init(new ArrayList<Integer>(testCase.csaLevel), testCase.width);
+				//op.runAndPrint();
 				op.run();
-				System.out.println("TC: width: " + testCase.width + ", height: " + testCase.height);
+				System.out.println("TC: name: " + testCase.name + ", width: " + testCase.width + ", height: " + testCase.height);
 				System.out.println("A: " + op.getSumA() + ", T: " + op.getSumT());
 			}
 		}
