@@ -27,6 +27,13 @@ public class Main {
 			}
 		}
 		
+		OptiWallace tOp = new OptiWallace();
+		AOptimizer aOP = tOp;
+		aOP.init(testCases.get(0).csaLevel, 20);
+		for(Integer x : tOp.wallaceSeries)
+			System.out.println(x + " ");
+	
+		
 		/*
 		ArrayList<Integer> csaLevel = new ArrayList<Integer>();
 		csaLevel.add(1230);
