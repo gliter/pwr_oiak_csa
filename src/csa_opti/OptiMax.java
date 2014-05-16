@@ -3,9 +3,12 @@ package csa_opti;
 import java.util.ArrayList;
 
 class OptiMax extends AOptimizer{
-
+	OptiMax() {
+		this.name = "Maksymalna";
+	}
 	OptiMax(ArrayList<Integer> csaLevelIn, int modulo) {
 		super(csaLevelIn, modulo);
+		this.name = "Maksymalna";
 	}
 
 	@Override

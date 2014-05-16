@@ -9,12 +9,29 @@ abstract class AOptimizer {
 	ArrayList<Adder> adders = new ArrayList<Adder>();
 	int A = 0;
 	int T = 0;
+	int sumA = 0;
+	int sumT = 0;
 	int n;
+	String name;
+	/**
+	 * Domyœlny konstruktor, nie inicjalizuje nic
+	 */
+	AOptimizer() {
+	}
 	/**
 	 * Konstruktor optymalizera
 	 * @param csaLevelIn referencja do poziomu drzewa CSA
 	 */
 	AOptimizer(ArrayList<Integer> csaLevelIn, int modulo) {
+		init(csaLevelIn, modulo);
+	}
+	void init(ArrayList<Integer> csaLevelIn, int modulo) {
+		this.A = 0;
+		this.T= 0;
+		this.sumA = 0;
+		this.sumT = 0;
+		csaLevelOut = new ArrayList<Integer>();
+		adders = new ArrayList<Adder>();
 		this.csaLevelIn = csaLevelIn;
 		this.n = modulo;
 		for(int i = csaLevelIn.size(); i < n; i++)
@@ -79,6 +96,24 @@ abstract class AOptimizer {
 		return T;
 	}
 	/**
+	 * @return suma powierzchni sumatorów na wszystkich poziomach
+	 */
+	int getSumA() {
+		return sumA;
+	}
+	/**
+	 * @return suma œcie¿ek krytycznych wszystkich poziomów
+	 */
+	int getSumT() {
+		return sumT;
+	}
+	/**
+	 * @return nazwa optymalizatora
+	 */
+	String getName() {
+		return name;
+	}
+	/**
 	 * Obs³uga modulo 2^n - 1
 	 * @param n
 	 */
@@ -118,5 +153,15 @@ abstract class AOptimizer {
 		}
 		else
 			return "None";
+	}
+	void run() {
+		int max;
+		do {
+			this.pushAndRun();
+			sumA += this.getA();
+			sumT += this.getT();
+			max = this.saveOutTree();
+		}
+		while(max > 2);
 	}
 }

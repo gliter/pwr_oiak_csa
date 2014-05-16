@@ -7,7 +7,26 @@ public class Main {
 		
 	}
 	public static void main(String[] args) {
+		//Tablica optymalizatorów
 		ArrayList<AOptimizer> optiArr = new ArrayList<AOptimizer>();
+		optiArr.add(new OptiMax());
+		
+		ArrayList< TestCase > testCases = new ArrayList< TestCase >();
+		testCases.add(TestCasesFactory.createEvenTestCase(40, 20));
+		testCases.add(TestCasesFactory.createEvenTestCase(60, 20));
+		testCases.add(TestCasesFactory.createEvenTestCase(40, 60));
+		
+		for(AOptimizer op : optiArr) {
+			System.out.println("Opt: " + op.getName());
+			for(TestCase testCase : testCases) {
+				op.init(testCase.csaLevel, testCase.width);
+				op.run();
+				System.out.println("TC: width: " + testCase.width + ", height: " + testCase.height);
+				System.out.println("A: " + op.getSumA() + ", T: " + op.getSumT());
+			}
+		}
+		
+		/*
 		ArrayList<Integer> csaLevel = new ArrayList<Integer>();
 		csaLevel.add(1230);
 		csaLevel.add(3232);
@@ -37,7 +56,7 @@ public class Main {
 			System.out.println();
 		}
 		while(max > 2);
-		System.out.println("SUM: A: " + a + ", SUM: T: " + t);
+		System.out.println("SUM: A: " + a + ", SUM: T: " + t);*/
 		
 	}
 }
