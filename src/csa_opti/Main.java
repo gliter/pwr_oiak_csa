@@ -10,6 +10,7 @@ public class Main {
 		//Tablica optymalizatorów
 		ArrayList<AOptimizer> optiArr = new ArrayList<AOptimizer>();
 		optiArr.add(new OptiMax());
+		optiArr.add(new OptiWallace());
 		
 		ArrayList< TestCase > testCases = new ArrayList< TestCase >();
 		testCases.add(TestCasesFactory.createEvenTestCase(40, 20));
@@ -27,11 +28,12 @@ public class Main {
 			}
 		}
 		
-		OptiWallace tOp = new OptiWallace();
+		/*OptiWallace tOp = new OptiWallace();
 		AOptimizer aOP = tOp;
-		aOP.init(testCases.get(0).csaLevel, 20);
+		aOP.init(testCases.get(2).csaLevel, 40);
 		for(Integer x : tOp.wallaceSeries)
-			System.out.println(x + " ");
+			System.out.println(x + " ");*/
+		//aOP.pushAndRun();
 	
 		
 		/*
