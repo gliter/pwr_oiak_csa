@@ -36,11 +36,12 @@ public class OptiWallace extends AOptimizer{
 		int targetNum = 0;
 		int maxHeight = 0;
 		for(int i = 0; i < csaLevelIn.size(); i++) {
-			if(i > maxHeight) {
+			if(csaLevelIn.get(i) > maxHeight) {
 				maxHeight = csaLevelIn.get(i);
 				maxIndex = i;
 			}
 		}
+		//System.out.println("maxHeight " + maxHeight);
 		for(int i = 0; i < wallaceSeries.size(); i++)
 		{
 			if(wallaceSeries.get(i) >= maxHeight) {
@@ -48,8 +49,6 @@ public class OptiWallace extends AOptimizer{
 				break;
 			}
 		}
-		//System.out.println(maxHeight + " " + targetNum);
-		//System.out.println(targetNum);
 		for(int i = 0; i < csaLevelIn.size(); i++) {
 			int index = (maxIndex + i) % csaLevelIn.size();
 			if(index < 0)
@@ -63,22 +62,20 @@ public class OptiWallace extends AOptimizer{
 			int prevDiff = prevBitSum - targetNum;
 			if(prevDiff < 0)
 				prevDiff = 0;
-			//System.out.println(bitSum);
+			
 			int diff = bitSum - targetNum + prevDiff / 2 + prevDiff % 2;
-			//System.out.println(diff);
+			
 			if(diff > 0) {
 				int faNum = diff / 2 + diff % 2;
-				//int haNum = diff % 2;
 				for(int j = 0; j < faNum; j++) {
 					Adder ad = new FullAdder(csaLevelIn, csaLevelOut, index);
-					ad.run();
-					adders.add(ad);
+					if(ad.isPossible()) {
+						ad.run();
+						adders.add(ad);
+					}
+					else
+						ad = null;
 				}
-				/*if(haNum == 1) {
-					Adder ad = new HalfAdder(csaLevelIn, csaLevelOut, index);
-					ad.run();
-					adders.add(ad);
-				}*/
 			}
 			
 		}

@@ -14,59 +14,25 @@ public class Main {
 		
 		ArrayList< TestCase > testCases = new ArrayList< TestCase >();
 		testCases.add(TestCasesFactory.createEvenTestCase(40, 20));
+		testCases.add(TestCasesFactory.createMulTestCase(40, 20));
+		testCases.add(TestCasesFactory.createRandTestCase(40, 20));
 		testCases.add(TestCasesFactory.createEvenTestCase(60, 20));
-		testCases.add(TestCasesFactory.createEvenTestCase(40, 60));
+		testCases.add(TestCasesFactory.createMulTestCase(60, 20));
+		testCases.add(TestCasesFactory.createRandTestCase(60, 20));
+		testCases.add(TestCasesFactory.createEvenTestCase(20, 10));
+		testCases.add(TestCasesFactory.createMulTestCase(20, 10));
+		testCases.add(TestCasesFactory.createRandTestCase(20, 10));
 		
-		for(AOptimizer op : optiArr) {
-			System.out.println("Opt: " + op.getName());
-			for(TestCase testCase : testCases) {
+		for(TestCase testCase : testCases) {	
+			 for(AOptimizer op : optiArr) {
+				System.out.println("Opt: " + op.getName());
 				op.init(new ArrayList<Integer>(testCase.csaLevel), testCase.width);
+				System.out.println("TC: name: " + testCase.name + ", width: " + testCase.width + ", height: " + testCase.height);
 				//op.runAndPrint();
 				op.run();
-				System.out.println("TC: name: " + testCase.name + ", width: " + testCase.width + ", height: " + testCase.height);
 				System.out.println("A: " + op.getSumA() + ", T: " + op.getSumT());
 			}
 		}
-		
-		/*OptiWallace tOp = new OptiWallace();
-		AOptimizer aOP = tOp;
-		aOP.init(testCases.get(2).csaLevel, 40);
-		for(Integer x : tOp.wallaceSeries)
-			System.out.println(x + " ");*/
-		//aOP.pushAndRun();
-	
-		
-		/*
-		ArrayList<Integer> csaLevel = new ArrayList<Integer>();
-		csaLevel.add(1230);
-		csaLevel.add(3232);
-		csaLevel.add(4433);
-		csaLevel.add(3322);
-		csaLevel.add(6011);
-		csaLevel.add(7033);
-		csaLevel.add(3111);
-		
-		for(Integer i : csaLevel)
-			System.out.print(i.toString() + "\t");
-		System.out.println();
-		
-		AOptimizer op = new OptiMax(csaLevel, 7);
-		int a = 0, t = 0;
-		int max;
-		do {
-			op.pushAndRun();
-			System.out.println(op.getAddersNum());
-			System.out.println("A: " + op.getA() + ", T: " + op.getT());
-			a += op.getA();
-			t += op.getT();
-			max = op.saveOutTree();
-		
-			for(Integer i : csaLevel)
-				System.out.print(i.toString() + "\t");
-			System.out.println();
-		}
-		while(max > 2);
-		System.out.println("SUM: A: " + a + ", SUM: T: " + t);*/
 		
 	}
 }
