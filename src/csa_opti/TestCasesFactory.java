@@ -61,7 +61,7 @@ public class TestCasesFactory {
 		testCase.width = width;
 		testCase.height = height;
 		
-		Random rand = new Random();
+		Random rand = new Random(width*height-height); //Zapewnia powtarzalnoœæ test case'u dla tych samych parametrów
 		
 		for(int i = 0; i < width; i++)
 			testCase.csaLevel.add(rand.nextInt(height+1));

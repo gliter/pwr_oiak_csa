@@ -1,7 +1,9 @@
 package csa_opti;
 
 import java.util.ArrayList;
-
+/**
+ * Optymalizacja maksymalna, u¿yte jest ile jest tylko mo¿liwe sumatorów FA i HA
+ */
 class OptiMax extends AOptimizer{
 	OptiMax() {
 		this.name = "Maksymalna";

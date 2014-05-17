@@ -3,6 +3,9 @@ package csa_opti;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Abstrakcyjna klasa, u¿ywana jako klasa bazowa dla wszystkich optymalizacji.
+ */
 abstract class AOptimizer {
 	ArrayList<Integer> csaLevelIn;
 	ArrayList<Integer> csaLevelOut = new ArrayList<Integer>();

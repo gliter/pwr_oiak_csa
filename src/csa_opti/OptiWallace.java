@@ -1,7 +1,12 @@
 package csa_opti;
 
 import java.util.ArrayList;
-
+/**
+ * Optymalizacja "zbli¿ona" do optymalizcji Wallace'a, zbli¿enie jest spowodowane
+ * u¿ywaniem arytmetyki modulo, gdzie trudno do koñca przewidzieæ iloœæ bitów na
+ * wadze po przeliczeniu poziomu.
+ * U¿ywa wy³¹cznie sumatorów FA i HA
+ */
 public class OptiWallace extends AOptimizer{
 	
 	ArrayList<Integer> wallaceSeries = new ArrayList<Integer>();

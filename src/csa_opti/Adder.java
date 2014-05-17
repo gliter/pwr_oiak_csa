@@ -3,6 +3,9 @@ package csa_opti;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Abstrakcyjna klasa sumatorów, u¿ywana jako klasa bazowa dla sumatorów.
+ */
 abstract class Adder implements Serializable{
 	/**
 	 * Serializable ID
