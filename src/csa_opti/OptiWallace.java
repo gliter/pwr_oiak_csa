@@ -37,7 +37,8 @@ public class OptiWallace extends AOptimizer{
 		}
 	}
 	@Override
-	void pushAndRun() {
+	int pushAndRun() {
+		int added = 0;
 		int targetNum = 0;
 		int maxHeight = 0;
 		for(int i = 0; i < csaLevelIn.size(); i++) {
@@ -77,6 +78,7 @@ public class OptiWallace extends AOptimizer{
 					if(ad.isPossible()) {
 						ad.run();
 						adders.add(ad);
+						added++;
 					}
 					else
 						ad = null;
@@ -88,6 +90,7 @@ public class OptiWallace extends AOptimizer{
 			csaLevelOut.set(i, csaLevelOut.get(i)+csaLevelIn.get(i));
 			csaLevelIn.set(i, 0);
 		}
+		return added;
 		
 	}
 	

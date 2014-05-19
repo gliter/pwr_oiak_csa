@@ -35,22 +35,25 @@ public class Sklansky extends Adder {
 		csaLevelIn.set(pos, csaLevelIn.get(pos) - 3);
 		csaLevelOut.set(pos, csaLevelOut.get(pos) + 1);
 		for(int i = pos + 1; i < positions; i++) {
-			csaLevelIn.set(i, csaLevelIn.get(pos) - 2);
-			csaLevelOut.set(i, csaLevelOut.get(pos) + 2);
+			csaLevelIn.set(i, csaLevelIn.get(i) - 2);
+			csaLevelOut.set(i, csaLevelOut.get(i) + 1);
 		}
+		csaLevelOut.set(pos+positions, csaLevelOut.get(pos+positions) + 1);
 	}
 
 	@Override
 	boolean isPossible() {
 		if(csaLevelIn.get(pos) < 3)
 			return false;
-		for(int i = pos+1; i < positions; i++) {
+		for(int i = pos + 1; i < positions - 1; i++) {
 			if(i >= csaLevelIn.size())
 				return false;
 			if(csaLevelIn.get(i) < 2)
 				return false;
 		}
-		return false;
+		//if(pos+positions >= csaLevelIn.size())
+		//	return false;
+		return true;
 	}
 
 }

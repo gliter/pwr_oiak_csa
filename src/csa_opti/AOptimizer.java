@@ -45,7 +45,7 @@ abstract class AOptimizer {
 	/**
 	 * Wstawia i uruchamia sumatory 
 	 */
-	abstract void pushAndRun();
+	abstract int pushAndRun();
 	/**
 	 * @return referencja do ArrayListy sumatorów
 	 */
@@ -160,7 +160,11 @@ abstract class AOptimizer {
 	void run() {
 		int max;
 		do {
-			this.pushAndRun();
+			int added = this.pushAndRun();
+			if(added == 0) {
+				System.out.println("B£¥D: Nie uda³o siê dodaæ ¿adnego sumatora");
+				return;
+			}
 			sumA += this.getA();
 			sumT += this.getT();
 			max = this.saveOutTree();
@@ -173,7 +177,11 @@ abstract class AOptimizer {
 			System.out.print(i.toString() + "\t");
 		System.out.println();
 		do {
-			this.pushAndRun();
+			int added = this.pushAndRun();
+			if(added == 0) {
+				System.out.println("B£¥D: Nie uda³o siê dodaæ ¿adnego sumatora");
+				return;
+			}
 			System.out.println(this.getAddersNum());
 			System.out.println("A: " + this.getA() + ", T: " + this.getT());
 			sumA += this.getA();

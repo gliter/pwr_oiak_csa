@@ -17,8 +17,9 @@ class OptiRand extends AOptimizer{
 	}
 
 	@Override
-	void pushAndRun() {
+	int pushAndRun() {
 		boolean end;
+		int added = 0;
 		do {
 			end = true;
 			for(int i = 0; i < csaLevelIn.size(); i++) {
@@ -27,6 +28,7 @@ class OptiRand extends AOptimizer{
 					ad.run();
 					adders.add(ad);
 					end = false;
+					added++;
 				}
 				else
 					ad = null;
@@ -38,6 +40,7 @@ class OptiRand extends AOptimizer{
 				if((ad.isPossible())&&(rand.nextDouble() <= chance)) {
 					ad.run();
 					adders.add(ad);
+					added++;
 				}
 				else
 					ad = null;
@@ -47,7 +50,7 @@ class OptiRand extends AOptimizer{
 			csaLevelOut.set(i, csaLevelOut.get(i)+csaLevelIn.get(i));
 			csaLevelIn.set(i, 0);
 		}
-		
+		return added;
 		
 	}
 

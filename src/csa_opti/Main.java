@@ -11,7 +11,8 @@ public class Main {
 		//Tablica optymalizatorów
 		ArrayList<AOptimizer> optiArr = new ArrayList<AOptimizer>();
 		optiArr.add(new OptiMax());
-		optiArr.add(new OptiWallace());
+		//optiArr.add(new OptiWallace());
+		optiArr.add(new Opti1(2));
 		
 		ArrayList< TestCase > testCases = new ArrayList< TestCase >();
 		testCases.add(TestCasesFactory.createEvenTestCase(40, 20));
@@ -35,7 +36,7 @@ public class Main {
 			}
 		}
 		
-		Adder ad = new Sklansky(null, null, 1, 3);
+		Adder ad = new Sklansky(null, null, 1, 4);
 		System.out.println(ad.getName() + " " + ad.getA() + " " + ad.getT());
 	}
 }

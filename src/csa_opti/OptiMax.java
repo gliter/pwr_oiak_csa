@@ -14,7 +14,8 @@ class OptiMax extends AOptimizer{
 	}
 
 	@Override
-	void pushAndRun() {
+	int pushAndRun() {
+		int added = 0;
 		boolean end;
 		do {
 			end = true;
@@ -24,6 +25,7 @@ class OptiMax extends AOptimizer{
 					ad.run();
 					adders.add(ad);
 					end = false;
+					added++;
 				}
 				else
 					ad = null;
@@ -34,6 +36,7 @@ class OptiMax extends AOptimizer{
 			if(ad.isPossible()) {
 				ad.run();
 				adders.add(ad);
+				added++;
 			}
 			else
 				ad = null;
@@ -42,6 +45,7 @@ class OptiMax extends AOptimizer{
 			csaLevelOut.set(i, csaLevelOut.get(i)+csaLevelIn.get(i));
 			csaLevelIn.set(i, 0);
 		}
+		return added;
 		
 		
 	}
