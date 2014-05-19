@@ -1,6 +1,7 @@
 package csa_opti;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 	Main() {
@@ -34,5 +35,7 @@ public class Main {
 			}
 		}
 		
+		Adder ad = new Sklansky(null, null, 1, 3);
+		System.out.println(ad.getName() + " " + ad.getA() + " " + ad.getT());
 	}
 }
