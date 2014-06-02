@@ -24,7 +24,7 @@ public class Sklansky extends Adder {
 		name = "Sklansky 2x" + (int)Math.pow(2, n) + " + 1";
 		positions = (int)Math.pow(2, n);
 		this.n = n;
-		A = n * (int)Math.pow(2, n-1) * 4 + 4 * positions + 2 * positions;
+		A = n * (int)Math.pow(2, n-1) * 4 + 4 * positions + 4 * positions;
 		T = n * 2 + 1 + 4; 
 		
 		
