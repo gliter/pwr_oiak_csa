@@ -10,32 +10,44 @@ public class Main {
 		//Tablica optymalizatorów
 		ArrayList<AOptimizer> optiArr = new ArrayList<AOptimizer>();
 		//optiArr.add(new OptiMax());
-		optiArr.add(new OptiWallace());
-		//optiArr.add(new Opti1(10));
+		//optiArr.add(new OptiWallace());
+		//optiArr.add(new Opti1(5));
+		optiArr.add(new Opti1(4));
+		//optiArr.add(new Opti1(3));
+		//optiArr.add(new Opti1(2));
 		
 		ArrayList< TestCase > testCases = new ArrayList< TestCase >();
-		testCases.add(TestCasesFactory.createEvenTestCase(40, 20));
-		testCases.add(TestCasesFactory.createMulTestCase(40, 20));
-		testCases.add(TestCasesFactory.createRandTestCase(40, 20));
-		testCases.add(TestCasesFactory.createEvenTestCase(60, 20));
-		testCases.add(TestCasesFactory.createMulTestCase(60, 20));
-		testCases.add(TestCasesFactory.createRandTestCase(60, 20));
-		testCases.add(TestCasesFactory.createEvenTestCase(20, 10));
-		testCases.add(TestCasesFactory.createMulTestCase(20, 10));
-		testCases.add(TestCasesFactory.createRandTestCase(20, 10));
+		/*for(int i = 10; i <= 60; i++)
+			testCases.add(TestCasesFactory.createEvenTestCase(i, 500));*/
+		/*for(int j = 10; j <= 60; j+=10)
+			for(int i = 10; i <= 500; i+=10)
+				testCases.add(TestCasesFactory.createEvenTestCase(j, i));*/
+		/*for(int j = 120; j <= 170; j+=10)
+			for(int i = 10; i <= 59; i+=1)
+				testCases.add(TestCasesFactory.createMulTestCase(j, i));*/
+		/*for(int j = 10; j <= 60; j+=10)
+			for(int i = 10; i <= 500; i+=10)
+				testCases.add(TestCasesFactory.createRandTestCase(j, i));*/
+		testCases.add(TestCasesFactory.createRandTestCase(20, 6, 16));
 		
-		for(TestCase testCase : testCases) {	
-			 for(AOptimizer op : optiArr) {
+		
+		for(AOptimizer op : optiArr) {	
+			System.out.println(op.getName());
+			System.out.println("Width\tHeight\tSum A\tSum T");
+			 for(TestCase testCase : testCases) {
 				System.out.println("Opt: " + op.getName());
 				op.init(new ArrayList<Integer>(testCase.csaLevel), testCase.width);
 				System.out.println("TC: name: " + testCase.name + ", width: " + testCase.width + ", height: " + testCase.height);
 				op.runAndPrint();
 				//op.run();
 				System.out.println("A: " + op.getSumA() + ", T: " + op.getSumT());
+				
+				//System.out.print(testCase.width + "\t" + testCase.height + "\t");
+				//System.out.println(op.getSumA() + "\t" + op.getSumT());
 			}
 		}
 		
-		Adder ad = new Sklansky(null, null, 1, 4);
-		System.out.println(ad.getName() + " " + ad.getA() + " " + ad.getT());
+		//Adder ad = new Sklansky(null, null, 1, 4);
+		//System.out.println(ad.getName() + " " + ad.getA() + " " + ad.getT());
 	}
 }

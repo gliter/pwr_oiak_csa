@@ -25,7 +25,7 @@ public class Sklansky extends Adder {
 		positions = (int)Math.pow(2, n);
 		this.n = n;
 		A = n * (int)Math.pow(2, n-1) * 4 + 4 * positions + 2 * positions;
-		T = n * 2 + 1 + 2;
+		T = n * 2 + 1 + 4; 
 		
 		
 	}
@@ -34,7 +34,7 @@ public class Sklansky extends Adder {
 	void run() {
 		csaLevelIn.set(pos, csaLevelIn.get(pos) - 3);
 		csaLevelOut.set(pos, csaLevelOut.get(pos) + 1);
-		for(int i = pos + 1; i < positions; i++) {
+		for(int i = pos + 1, j = 1; j < positions; j++, i++) {
 			csaLevelIn.set(i, csaLevelIn.get(i) - 2);
 			csaLevelOut.set(i, csaLevelOut.get(i) + 1);
 		}
@@ -45,7 +45,7 @@ public class Sklansky extends Adder {
 	boolean isPossible() {
 		if(csaLevelIn.get(pos) < 3)
 			return false;
-		for(int i = pos + 1; i < positions - 1; i++) {
+		for(int i = pos + 1, j = 1; j < positions; i++, j++) {
 			if(i >= csaLevelIn.size())
 				return false;
 			if(csaLevelIn.get(i) < 2)

@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Opti1 extends AOptimizer {
 	int n;
 	Opti1(int n) {
-		this.name = "Opt. 1";
+		this.name = "Opt. 1 n: " + n;
 		this.n = n;
 	}
 	Opti1(ArrayList<Integer> csaLevelIn, int modulo, int n) {
 		super(csaLevelIn, modulo);
-		this.name = "Opt. 1";
+		this.name = "Opt. 1 n: " + n;
 		this.n = n;
 	}
 	@Override

@@ -9,8 +9,8 @@ class HalfAdder extends Adder {
 	private static final long serialVersionUID = 1L;
 	HalfAdder(ArrayList<Integer> csaLevelIn, ArrayList<Integer> csaLevelOut, int pos) {
 		super(csaLevelIn, csaLevelOut, pos);
-		T = 3;
-		A = 2;
+		T = 2;
+		A = 3;
 		name  = "HA";
 	}
 	@Override

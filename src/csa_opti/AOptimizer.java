@@ -43,7 +43,7 @@ abstract class AOptimizer {
 			csaLevelOut.add(0);
 	}
 	/**
-	 * Wstawia i uruchamia sumatory 
+	 * Wstawia i uruchamia sumatory zwraca iloœæ dodanych sumatorów
 	 */
 	abstract int pushAndRun();
 	/**
